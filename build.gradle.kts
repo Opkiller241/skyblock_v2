@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("com.gradleup.shadow") version "8.3.0"
 }
 
 group = "itzkiller"
@@ -10,11 +11,27 @@ repositories {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("net.minestom:minestom-snapshots:d0754f2a15")
 }
 
-tasks.test {
-    useJUnitPlatform()
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(22)) // Minestom has a minimum Java version of 21
+    }
+}
+
+tasks {
+    jar{
+        manifest{
+            attributes["Main-Class"] = "itzkiller.Main"
+        }
+    }
+
+    build{
+        dependsOn(shadowJar)
+    }
+    shadowJar {
+        mergeServiceFiles()
+        archiveClassifier.set("")
+    }
 }

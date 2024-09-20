@@ -1,6 +1,5 @@
 package itzkiller;
 
-
 import net.minestom.server.MinecraftServer;
 
 import net.minestom.server.coordinate.Pos;
@@ -14,13 +13,13 @@ import net.minestom.server.instance.InstanceManager;
 import net.minestom.server.instance.LightingChunk;
 import net.minestom.server.instance.anvil.AnvilLoader;
 
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        System.out.println("server started!");
 
         //initialize(server)
         MinecraftServer server=MinecraftServer.init();
-        server.start("0.0.0.0",25565);
 
         //creating instance
         InstanceManager instanceManager=MinecraftServer.getInstanceManager();
@@ -28,6 +27,10 @@ public class Main {
 
         //chunks
         instanceContainer.setChunkLoader(new AnvilLoader("resources/worlds/hub"));
+
+        //save chunks
+        instanceContainer.saveChunksToStorage();
+
 
         //events handler
         GlobalEventHandler globalEventHandler=MinecraftServer.getGlobalEventHandler();
@@ -40,5 +43,7 @@ public class Main {
         //lighting
         instanceContainer.setChunkSupplier(LightingChunk::new);
 
+        //server starts
+        server.start("0.0.0.0",25565);
     }
 }
