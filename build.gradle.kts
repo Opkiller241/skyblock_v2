@@ -13,8 +13,8 @@ repositories {
 
 dependencies {
     implementation("net.minestom:minestom-snapshots:d0754f2a15")
-    compileOnly("org.projectlombok:lombok:1.18.28")
-    annotationProcessor("org.projectlombok:lombok:1.18.28")
+    compileOnly("org.projectlombok:lombok:1.18.34")
+    annotationProcessor("org.projectlombok:lombok:1.18.34")
 }
 
 java {

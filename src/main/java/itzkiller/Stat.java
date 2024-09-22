@@ -1,14 +1,13 @@
 package itzkiller;
 
+ /**
+ * @author Carscupcake
+ */
 
 import lombok.Getter;
 
-/**
-* @author carscupcake
-*/
-
 @Getter
-public enum stat {
+public enum Stat {
     Health("Health", "❤", "§c", false, 100d, -1d),
     Defense("Defense", "❈", "§a", false),
     Speed("Speed", "✦", "§f", false, 100, 500),
@@ -65,7 +64,7 @@ public enum stat {
     private final double baseValue;
     private final double maxValue;
     private boolean hiddenStat;
-    stat(String name, String symbol, String prefix, boolean percentValue, double baseValue, double maxValue) {
+    Stat(String name, String symbol, String prefix, boolean percentValue, double baseValue, double maxValue) {
         this.name = name;
         this.symbol = symbol;
         this.prefix = prefix;
@@ -74,11 +73,11 @@ public enum stat {
         this.maxValue = maxValue;
         hiddenStat = false;
     }
-    stat(boolean hiddenStat, String name, String symbol, String prefix) {
+    Stat(boolean hiddenStat, String name, String symbol, String prefix) {
         this(name, symbol, prefix, false);
         this.hiddenStat = hiddenStat;
     }
-    stat(String name, String symbol, String prefix, boolean isPercentValue) {
+    Stat(String name, String symbol, String prefix, boolean isPercentValue) {
         this(name, symbol, prefix, isPercentValue, 0, -1);
     }
 

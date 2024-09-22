@@ -1,5 +1,6 @@
 package itzkiller;
 
+import itzkiller.command.GuiCommand;
 import net.minestom.server.MinecraftServer;
 
 import net.minestom.server.coordinate.Pos;
@@ -28,8 +29,13 @@ public class Main {
         //chunks
         instanceContainer.setChunkLoader(new AnvilLoader("resources/worlds/hub"));
 
+        //command
+        MinecraftServer.getCommandManager().register(new GuiCommand());
+
+
         //save chunks
         instanceContainer.saveChunksToStorage();
+        instanceContainer.saveInstance();
 
 
         //events handler
